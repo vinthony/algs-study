@@ -18,9 +18,13 @@ public class QuickUnion implements UFModule {
     public void union(int a, int b) {
         int a1 = findRoot(a);
         int a2 = findRoot(b);
-        // impovement 判断 避免高树
+
+        //old step
+
+        //arr[a1] = arr[a2];
+
+        // improvement avoid tall tree
         if(a1 == a2) return;
-        //将权值小得放在权值大的树下
         if( size[a1] < size[a2] ){
             arr[a1] = a2; size[a1]++;
         }else{
@@ -36,7 +40,8 @@ public class QuickUnion implements UFModule {
     }
     private int findRoot(int i){
         if(arr[i] != i )
-            //压缩路径
+            //impovement path compression
+            //return findRoot(arr[i]);
             return findRoot(findRoot(arr[i]));
         else
             return arr[i];

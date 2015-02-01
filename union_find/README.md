@@ -1,6 +1,6 @@
 
 
-#About Union Find
+# About Union Find
 
 Union Find is a algorithm to find 2 point union or not
 
@@ -11,7 +11,7 @@ reference:
 
 [my code](https://github.com/vinthony/algs-study.git)
 
-#Fxample
+# Example
 
         0 1 2 3 4 5 6 7 8 9
         union(2,3)
@@ -20,7 +20,7 @@ reference:
         checked(0,9) //false
         checked(0,3) //true
 
-#Structure
+# Structure
 
 Define a `interface` to abstract this problem.it have 2 abstract method.
 
@@ -30,7 +30,7 @@ Define a `interface` to abstract this problem.it have 2 abstract method.
 * `checked()` is a method to check if `a` and `b` is connected.
 * `union()` is a method to union two point.
 
-#QuickFind
+# QuickFind
 
 we can update all the connected items to the same value.
 
@@ -67,20 +67,20 @@ there is only a step to find the root of the tree.
 QuickUnion will need more time to find.
 
 
-#Compare
+# Compare
 
-###QuickFind defect:
+### QuickFind defect:
 
 * union too expensive.
 
-###QuickUnion defect:
+### QuickUnion defect:
 
 * find too expensive, and trees are tall.
 
 
-#Improvement
+# Improvement
 
-###weighting
+### weighting
 
 It is a good idea to add weighting to trees.
 
@@ -97,7 +97,7 @@ which would keep tree flat.
 
 > you can view this code in `src/main/QuickUnion.java`.
 
-###path compression
+### path compression
 
 the root finder is too expensive, we can compress the path.
 
@@ -106,7 +106,7 @@ Everytime when we add a computing a new item , making all the checked leaves poi
 add the small root to the grandparent of another root. this move works too.
 
 
-#Summary
+# Summary
 
 M union-find operations on a set of N objects
 

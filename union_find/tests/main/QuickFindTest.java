@@ -22,6 +22,9 @@ public class QuickFindTest {
         Assert.assertEquals(quickFind.connected(5,2),true);
         Assert.assertEquals(quickFind.connected(1,9),true);
         Assert.assertEquals(quickFind.connected(3,9),true);
+        Assert.assertEquals(quickFind.connected(7,9),false);
+        Assert.assertEquals(quickFind.connected(7,8),false);
+
     }
 
 }

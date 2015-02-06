@@ -34,6 +34,7 @@ so the Running time of `binary search` is `logN`;
 ## some theory about memory
 
 #### primitive types
+| item| bytes|
 |-----|------|
 | `boolean`| 1 |
 |`byte`| 1|
@@ -44,6 +45,8 @@ so the Running time of `binary search` is `logN`;
 | `double` | 8 |
 
 #### array
+
+| item| bytes|
 |----|----|
 | `int[]` | 24 + `4*N` |
 |`double[]`| 24 + `8*N` |

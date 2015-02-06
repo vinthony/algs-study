@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/algs-study.iml" filepath="$PROJECT_DIR$/algs-study.iml" />
-      <module fileurl="file://$PROJECT_DIR$/union_find/union_find.iml" filepath="$PROJECT_DIR$/union_find/union_find.iml" />
+      <module fileurl="file://$PROJECT_DIR$/week_1_three_sum/week_1_three_sum.iml" filepath="$PROJECT_DIR$/week_1_three_sum/week_1_three_sum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/week_1_union_find/week_1_union_find.iml" filepath="$PROJECT_DIR$/week_1_union_find/week_1_union_find.iml" />
     </modules>
   </component>
 </project>

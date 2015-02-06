@@ -41,9 +41,16 @@ public class QuickUnion implements UFModule {
     private int findRoot(int i){
         if(arr[i] != i )
             //impovement path compression
-            //return findRoot(arr[i]);
-            return findRoot(findRoot(arr[i]));
+            return findRoot(arr[i]);
+          //  return findRoot(findRoot(arr[i]));
         else
             return arr[i];
+    }
+    public String getArray(){
+        String str="";
+        for (int i = 0;i<arr.length;i++){
+            str += arr[i]+" ";
+        }
+        return str;
     }
 }

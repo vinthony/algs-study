@@ -14,6 +14,7 @@ public class Percolation {
     private int layer;
     public Percolation(int N){
 //        创建一个N*N的全部点block的矩阵
+        if(N<=0) throw new IllegalArgumentException("illegal arugment");
         count = N*N;
         layer = N;
         state = new int[count];
@@ -28,6 +29,7 @@ public class Percolation {
     public void open(int i,int j){
 //        将(i,j)点变成unblock状态 相当于连接(j,i)周围四个点
 //        特殊点【四个角，四条边】
+        if(i<=0||j<=0||i>layer||j>layer) throw new IndexOutOfBoundsException("out of array");
         int pointW = getPosByXY(i,j);
         state[pointW] = opend;
         if(i == 1){ // 第一层
@@ -59,11 +61,13 @@ public class Percolation {
     }
     public boolean isOpen(int i,int j){
 //        (i,j)点是否unblock
+        if(i<=0||j<=0||i>layer||j>layer) throw new IndexOutOfBoundsException("out of array");
         int pointW = getPosByXY(i,j);
         return state[pointW] == opend;//没open
     }
     public boolean isFull(int i,int j){
 //        (i,j)点是否为上下路径上的点
+        if(i<=0||j<=0||i>layer||j>layer) throw new IndexOutOfBoundsException("out of array");
         int pointW = getPosByXY(i,j);
         return wq.connected(pointW,virtualTop);
     }
@@ -91,7 +95,7 @@ public class Percolation {
         for (int i = 1;i<=100;i++ ){
             p.open(i,10);
         }
-        System.out.println(p.isOpen(50,10));
+        System.out.println(p.isOpen(50, 10));
         System.out.println(p.percolates());
     }
 }

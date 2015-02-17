@@ -7,8 +7,8 @@ public class WeightedQuickUnionUF {
     private int[] arr;
     private int[] count;
     public WeightedQuickUnionUF(int n){
-        arr = new int[n+2];
-        count = new int[n+2];
+        arr = new int[n];
+        count = new int[n];
         for (int i = 0 ; i < n;i++){
             arr[i] = i;
         }

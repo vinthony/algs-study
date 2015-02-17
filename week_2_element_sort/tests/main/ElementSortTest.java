@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class SelectSortTest {
+public class ElementSortTest {
     private String[] a = null;
     private String[] b =  null;
     @Before
@@ -23,16 +23,23 @@ public class SelectSortTest {
         while((lineStr = bufferedReader.readLine())!=null) {
             allStr += lineStr;
         }
-        a = allStr.split(".");
+        a = allStr.split(" ");
         b = new String[]{"3", "4", "1", "5", "0"};
     }
     @Test
     public void testSelectSort() throws Exception{
-       System.out.println(Arrays.toString(SelectSort.sort(b)));
-        System.out.println(Arrays.toString(InsertSort.sort(b)));
+       System.out.println(Arrays.toString(SelectSort.sort(a)));
+    }
+    @Test
+    public void testInsertSort() throws Exception{
+        System.out.println(Arrays.toString(InsertSort.sort(a)));
+    }
+    @Test
+    public void testShellSort() throws Exception{
+        System.out.println(Arrays.toString(ShellSort.sort(a)));
     }
     @Test
     public void testoldSelect() throws Exception{
-        Arrays.toString(SelectSort.sort_my(a));
+        Arrays.toString(SelectSort.sort_my(b));
     }
 }

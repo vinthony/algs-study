@@ -3,12 +3,11 @@
  */
 package main;
 
-import java.util.Random;
-
 public class PercolationStats {
-    private int num;
-    private int count;
+    private int num; // 数组的大小
+    private int count; // 次数
     private double[] times;
+    private int[] status;
     private Percolation p;
     public PercolationStats(int N,int T){
         if( N<=0 || T <=0 ) throw new IllegalArgumentException("<0");
@@ -16,13 +15,14 @@ public class PercolationStats {
         count = T;
         times = new double[T];
         for (int i=0;i<count;i++){
-            int mmm = 0;
             p = new Percolation(num);
-            while(!p.percolates()){
-                p.open(getRandomInt(),getRandomInt());
-                mmm++;
+            while(p.percolates() != true){
+              //  System.out.println("random integer:" + x+","+y);
+                p.openRandomPos();
             }
+            int mmm = p.getOpendCount();
             times[i] = (double)mmm/(double)(num*num);
+            System.out.println(times[i]+","+mmm+","+num*num);
         }
     }
     public double mean(){
@@ -35,6 +35,7 @@ public class PercolationStats {
     public double stddev(){
         double standard = 0.0;
         double mean = mean();
+        System.out.println(mean);
         for (int i = 0;i<count;i++){
             standard += (times[i]-mean)*(times[i]-mean);
         }
@@ -49,10 +50,6 @@ public class PercolationStats {
         double mean = mean();
         double standard = stddev();
         return mean + 1.96*standard/(Math.sqrt(count));
-    }
-    private int getRandomInt(){
-        Random random = new Random();
-        return random.nextInt(count)+1;
     }
     public static void main(String[] args){
         int N=Integer.parseInt("200");

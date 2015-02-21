@@ -1,6 +1,8 @@
 //import main.WeightedQuickUnionUF;
 package main;
 
+import java.util.Random;
+
 /**
  * Created by nantu on 15/2/17.
  */
@@ -10,6 +12,7 @@ public class Percolation {
     private int virtualBottom;
     WeightedQuickUnionUF wq;
     private int count;
+    private int open_count=0;
     private int opend= -2;
     private int layer;
     public Percolation(int N){
@@ -30,8 +33,10 @@ public class Percolation {
 //        将(i,j)点变成unblock状态 相当于连接(j,i)周围四个点
 //        特殊点【四个角，四条边】
         if(i<=0||j<=0||i>layer||j>layer) throw new IndexOutOfBoundsException("out of array");
+        if(isOpen(i,j)) return;
         int pointW = getPosByXY(i,j);
         state[pointW] = opend;
+        open_count++;
         if(i == 1){ // 第一层
             wq.union(pointW,virtualTop);//连接天
             reunion(i,j,1,0);//下一层
@@ -79,6 +84,19 @@ public class Percolation {
                 return true;
         }
         return false;
+    }
+    public void openRandomPos(){
+        Random random= new Random();
+        int n=random.nextInt(count);
+        while(state[n] == -2){
+            n = random.nextInt(count);
+        }
+        int i = n/layer + 1;
+        int j = n%layer + 1;
+        open(i,j);
+    }
+    public int getOpendCount(){
+        return open_count;
     }
     private int getPosByXY(int i,int j){
         return (i-1)*layer + j-1;

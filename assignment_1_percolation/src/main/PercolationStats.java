@@ -22,7 +22,7 @@ public class PercolationStats {
             }
             int mmm = p.getOpendCount();
             times[i] = (double)mmm/(double)(num*num);
-            System.out.println(times[i]+","+mmm+","+num*num);
+            //System.out.println(times[i]+","+mmm+","+num*num);
         }
     }
     public double mean(){
@@ -35,7 +35,6 @@ public class PercolationStats {
     public double stddev(){
         double standard = 0.0;
         double mean = mean();
-        System.out.println(mean);
         for (int i = 0;i<count;i++){
             standard += (times[i]-mean)*(times[i]-mean);
         }

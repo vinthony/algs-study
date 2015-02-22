@@ -10,7 +10,7 @@ percolation是一个利用`union find`来进行图像表述的算法。
 
 如图：
 
-!(percolation)[http://coursera.cs.princeton.edu/algs4/assignments/percolates.png]
+!(http://coursera.cs.princeton.edu/algs4/assignments/percolates.png)[percolation]
 
 
 ## 解法

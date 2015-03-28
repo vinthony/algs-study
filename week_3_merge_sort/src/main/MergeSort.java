@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Arrays;
+
 /**
  * Created by nantu on 15/3/4.
  */
@@ -8,7 +10,7 @@ public class MergeSort {
     // 传入一个a[]
     public static void merge(Comparable a[],Comparable aux[],int lo,int mid,int hi){
         // 首先复制数组
-        for(int i = lo;i<hi;i++){
+        for(int i = lo;i<=hi;i++){
             aux[i] = a[i];
         }
         // 定义两部分的最小值
@@ -26,6 +28,8 @@ public class MergeSort {
         int mid = lo +(hi-lo)/2;
         sort(a,aux,lo,mid);
         sort(a,aux,mid+1,hi);
+        //improvement 去掉最后一次比较
+        if(!less(a[mid+1],a[mid])) return;
         merge(a,aux,lo,mid,hi);
     }
     public static void sort(Comparable a[]){
@@ -41,5 +45,11 @@ public class MergeSort {
     }
     private static boolean less(Comparable v,Comparable w){
         return v.compareTo(w) < 0 ;
+    }
+
+    public static void main(String args[]){
+        String[] x = {"1","6","5","7","8","2","3"};
+        MergeSort.sort(x);
+        System.out.println(Arrays.toString(x));
     }
 }

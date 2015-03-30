@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/week_2_element_sort/week_2_element_sort.iml" filepath="$PROJECT_DIR$/week_2_element_sort/week_2_element_sort.iml" />
       <module fileurl="file://$PROJECT_DIR$/week_2_stack_queue_bag/week_2_stack_queue_bag.iml" filepath="$PROJECT_DIR$/week_2_stack_queue_bag/week_2_stack_queue_bag.iml" />
       <module fileurl="file://$PROJECT_DIR$/week_3_merge_sort/week_3_merge_sort.iml" filepath="$PROJECT_DIR$/week_3_merge_sort/week_3_merge_sort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/week_3_quick_sort/week_3_quick_sort.iml" filepath="$PROJECT_DIR$/week_3_quick_sort/week_3_quick_sort.iml" />
     </modules>
   </component>
 </project>

@@ -22,8 +22,10 @@ public class QuickSort {
             while(less(a[++i],a[lo])) if(i == hi) break;//找到最大的
             while(less(a[lo],a[--j])) if(j == lo) break;//找到最小的
             if(i >= j) break;
-            exch(a,i,j);
+            System.out.println(i+" "+j);
+            exch(a, i, j);
         }
+        System.out.println(lo+" "+j);
         exch(a,lo,j);
         return j;
     }

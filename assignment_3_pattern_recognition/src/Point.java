@@ -21,7 +21,9 @@ public class Point implements Comparable<Point> {
             Point t0 = new Point(0,0);
             if (t0.slopeTo(t1) < t0.slopeTo(t2)) {
                 return -1;
-            } else {
+            } else if(t0.slopeTo(t1) == t0.slopeTo(t2)) {
+                return 0;
+            }else{
                 return 1;
             }
         }
@@ -54,9 +56,13 @@ public class Point implements Comparable<Point> {
         if(that.x - this.x == 0 && that.y - this.y == 0) return -Double.MAX_VALUE;
         else if(that.x - this.x == 0) // 垂直的线
             return Double.MAX_VALUE;
-        else if (that.y - this.y == 0)
+        else if (that.y - this.y == 0){
             return +0.0;
-        return (that.y - this.y) / (that.x - this.x);
+        }
+        else{
+            return (that.y - this.y) / (double)(that.x - this.x);
+
+        }
     }
 
     // is this point lexicographically smaller than that one?
@@ -64,9 +70,11 @@ public class Point implements Comparable<Point> {
     public int compareTo(Point that) {
         /* YOUR CODE HERE */
         if(that.y<this.y ||(that.y==this.y&&that.x<this.x)){
-            return -1;
-        }else{
             return 1;
+        }else if(that.y == this.y && this.x == that.x){
+            return 0;
+        }else{
+            return -1;
         }
     }
 

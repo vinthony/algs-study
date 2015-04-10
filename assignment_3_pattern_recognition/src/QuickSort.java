@@ -1,10 +1,12 @@
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Created by nantu on 15/3/30.
  */
 public class QuickSort {
+    private static Comparator com=null;
     public static void sort(Comparable[] a){
         sort(a,0,a.length-1);
     }
@@ -13,6 +15,9 @@ public class QuickSort {
         int j = partition(a,lo,hi);
         sort(a,lo,j-1);
         sort(a,j+1,hi);
+    }
+    public static void sort(Comparable[] a,Comparator x){
+        com = x;
     }
     private static int partition(Comparable[] a,int lo,int hi){
         //确定边界
@@ -27,7 +32,10 @@ public class QuickSort {
         return j;
     }
     private static boolean less(Comparable v,Comparable w){
-        return v.compareTo(w)<0;
+        if(com!=null)
+            return com.compare(v,w)<0;
+        else
+            return v.compareTo(w)<0;
     }
     private static void exch(Comparable a[],int i ,int j){
         Comparable temp = a[i];

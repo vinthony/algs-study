@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by nantu on 15/4/9.
  */
@@ -20,7 +22,6 @@ public class Fast {
             QuickSort.sort(arr, origin.SLOPE_ORDER);
             Point[] n = new Point[N];
             Double last_slopes = null;
-            int ii = 0;
             int alignedPoints = 0;
             for (Point point : arr) {
                 if (point == origin) continue;
@@ -36,7 +37,7 @@ public class Fast {
                 }
                 last_slopes = s;
             }
-            if (ii >= 3) {
+            if (alignedPoints >= 3) {
                 showLines(origin,n,alignedPoints);
             }
         }
@@ -44,6 +45,8 @@ public class Fast {
     }
     public static void showLines(Point origin,Point[] n,int size){
         String str = origin.toString();
+        Arrays.sort(n, 0, size);
+        if(origin.compareTo(n[0])>0) return;
         for (int q = 0; q < size; q++) {
             origin.drawTo(n[q]);
             str += "->" + n[q].toString();

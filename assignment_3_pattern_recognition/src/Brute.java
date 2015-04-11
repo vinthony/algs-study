@@ -24,12 +24,11 @@ public class Brute {
                     Point p3 = arr[k];
                     for(int m = 0;m<N;m++) {
                         Point p4 = arr[m];
-                        if (p1.compareTo(p2) < 0 && p2.compareTo(p3) <0 && p3.compareTo(p4)<0) {
-                            if (p1.slopeTo(p2) == p1.slopeTo(p3) && p1.slopeTo(p2) == p1.slopeTo(p4))
-                                p1.drawTo(p2);
-                                p2.drawTo(p3);
-                                p3.drawTo(p4);
-                                StdOut.println(p1.toString() + "->" + p2.toString() + "->" + p3.toString() + "->" + p4.toString());
+                        if(Brute.isSameLine(p1,p2,p3,p4)){
+                            p1.drawTo(p2);
+                            p2.drawTo(p3);
+                            p3.drawTo(p4);
+                            StdOut.println(p1.toString() + "->" + p2.toString() + "->" + p3.toString() + "->" + p4.toString());
                         }
                     }
                 }
@@ -37,5 +36,13 @@ public class Brute {
         }
         StdDraw.show(0);
         StdDraw.setPenRadius();
+    }
+    public static boolean isSameLine(Point p1,Point p2,Point p3,Point p4){
+        if(p1.compareTo(p2)<0 && p2.compareTo(p3)<0 && p3.compareTo(p4)<0){//单调递增 避免重复
+            if(p1.slopeTo(p2) == p1.slopeTo(p3) && p1.slopeTo(p2) == p1.slopeTo(p4)){
+                return true;
+            }
+        }
+        return false;
     }
 }

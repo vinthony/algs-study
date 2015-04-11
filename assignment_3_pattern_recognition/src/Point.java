@@ -14,20 +14,8 @@ import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
 
-    // compare points by slope
-    public static final Comparator<Point> SLOPE_ORDER = new Comparator<Point>() {
-        @Override
-        public int compare(Point t1, Point t2) {
-            Point t0 = new Point(0,0);
-            if (t0.slopeTo(t1) < t0.slopeTo(t2)) {
-                return -1;
-            } else if(t0.slopeTo(t1) == t0.slopeTo(t2)) {
-                return 0;
-            }else{
-                return 1;
-            }
-        }
-    };       // YOUR DEFINITION HERE
+    // compare points by slope 返回一个comparator
+    public final Comparator<Point> SLOPE_ORDER = new SlopeComparator();       // YOUR DEFINITION HERE
 
     private final int x;                              // x coordinate
     private final int y;                              // y coordinate
@@ -37,7 +25,23 @@ public class Point implements Comparable<Point> {
         this.x = x;
         this.y = y;
     }
-
+    public Point ret(){
+        return this;
+    }
+    //非静态内部类访问非静态方法。
+    private class SlopeComparator implements Comparator<Point>{
+        Point t0 = ret();
+        @Override
+        public int compare(Point t1, Point t2) {
+            if(t0.slopeTo(t1) > t0.slopeTo(t2)){
+                return 1;
+            }else if(t0.slopeTo(t1)== t0.slopeTo(t2)){
+                return 0;
+            }else{
+                return -1;
+            }
+        }
+    }
     // plot this point to standard drawing
     public void draw() {
         /* DO NOT MODIFY */

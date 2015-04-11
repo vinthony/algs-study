@@ -6,7 +6,6 @@ public class Fast {
         StdDraw.setXscale(0, 32768);
         StdDraw.setYscale(0, 32768);
         StdDraw.show(0);
-        StdDraw.setPenRadius(0.01);
         String filename = args[0];
         In in = new In(filename);
         int N = in.readInt();
@@ -16,34 +15,40 @@ public class Fast {
             arr[i] = p;
            p.draw();
         }
-        QuickSort.sort(arr);
-        for (int i = 1;i<=1;i++){
-            Point origin = arr[i];
-            //得到斜率
-            QuickSort.sort(arr, Point.SLOPE_ORDER);
-            //double Comparable?
+        for (Point origin : arr) {
+            //按斜率排序
+            QuickSort.sort(arr, origin.SLOPE_ORDER);
             Point[] n = new Point[N];
-            for (int m = 0,ii=0;m <arr.length;m++){
-                //斜率相等 并且 不等于origin元素。
-                Double slopes = origin.slopeTo(arr[m]);
-                try {
-                    while(slopes.equals(origin.slopeTo(arr[m+1]))){
-                        n[ii++] = arr[m];
-                        m++;
+            Double last_slopes = null;
+            int ii = 0;
+            int alignedPoints = 0;
+            for (Point point : arr) {
+                if (point == origin) continue;
+                Double s = origin.slopeTo(point); //计算出斜率
+                if (s.equals(last_slopes)) { // 如果和上次的斜率相等
+                    n[alignedPoints++] = point; //放入collection
+                } else {
+                    if (alignedPoints >=3) {//不相等，如果有三个炼成直线
+                        showLines(origin, n, alignedPoints);//打印
                     }
-                }catch (Exception e){
-                    n[ii++]=arr[m];
+                    alignedPoints = 1;
+                    n[0] = point;
                 }
-                if(ii==0) continue;
-                String str = origin.toString();
-                for (int q = 0 ;q<ii;q++){
-                    origin.drawTo(n[q]);
-                    str += "->"+n[q].toString();
-                }
-                StdOut.println(ii+":"+str);
+                last_slopes = s;
+            }
+            if (ii >= 3) {
+                showLines(origin,n,alignedPoints);
             }
         }
         StdDraw.show(0);
-
     }
+    public static void showLines(Point origin,Point[] n,int size){
+        String str = origin.toString();
+        for (int q = 0; q < size; q++) {
+            origin.drawTo(n[q]);
+            str += "->" + n[q].toString();
+        }
+        StdOut.println((size + 1) + ":" + str);
+    }
+
 }

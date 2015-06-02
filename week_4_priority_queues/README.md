@@ -9,8 +9,9 @@ some straight-forward ways ,for example:
 
 there is the efficiency of this two method:
 
------|------|------|------
+
 type|INSERT|DEL|FIND MAX
+-----|------|------|------
 ORDER QUEUE| N| 1 | 1
 UNORDER QUEUE| 1| N| N
 
@@ -18,8 +19,8 @@ Is there have more efficient way to do this.
 
 we can use binary heap to  deal with priority queue:
 
------|------|------|------
 type|INSERT|DEL|FIND MAX
+-----|------|------|------
 HEAP| logN| logN|1
 
 #### what is maximum/minimum heap
